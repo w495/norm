@@ -1,0 +1,17 @@
+{application,norm,
+[{description,"norm"},
+{vsn,
+    "0.1.0"
+},
+{modules,[
+    norm,
+    norm_types,
+    norm_convert
+]},
+{registered,[]},
+{applications,[
+    kernel,
+    stdlib
+]},
+{mod,{norm_app,[]}},
+{env,[]}]}.
