@@ -13,64 +13,66 @@
 
 # Example (Пример)
 
-    rr("include/norm.hrl").
-    [norm,norm_error,norm_rule]
+```erlang
+rr("include/norm.hrl").
+[norm,norm_error,norm_rule]
 
-    norm:norm([{<<"name">>, <<"ivan">>},{<<"age">>, <<"40.1">>}],[
-        #norm_rule{key=name, types=[string,nullable]},
-        #norm_rule{key=age, types=[float, integer,nullable]}
-    ]).
+norm:norm([{<<"name">>, <<"ivan">>},{<<"age">>, <<"40.1">>}],[
+    #norm_rule{key=name, types=[string,nullable]},
+    #norm_rule{key=age, types=[float,integer,nullable]}
+]).
 
-    %%
-    %% #norm{return = [{age,40.1},{name,<<"ivan">>}],errors = []}
-    %%
+%%
+%% #norm{return = [{age,40.1},{name,<<"ivan">>}],errors = []}
+%%
 
-    norm:norm([{<<"name">>, <<"ivan">>},{<<"age">>, <<"40">>}],[
-        #norm_rule{key=name, types=[string,nullable]},
-        #norm_rule{key=age, types=[float, integer,nullable]}
-    ]).
+norm:norm([{<<"name">>, <<"ivan">>},{<<"age">>, <<"40">>}],[
+    #norm_rule{key=name, types=[string,nullable]},
+    #norm_rule{key=age, types=[float,integer,nullable]}
+]).
 
-    %%
-    %% #norm{return = [{age,40},{name,<<"ivan">>}],errors = []}
-    %%
+%%
+%% #norm{return = [{age,40},{name,<<"ivan">>}],errors = []}
+%%
 
-    norm:norm([{<<"name">>, <<"null">>},{<<"age">>, <<"null">>}],[
-        #norm_rule{key=name, types=[string,nullable]},
-        #norm_rule{key=age, types=[float, integer,nullable]}
-    ]).
+norm:norm([{<<"name">>, <<"null">>},{<<"age">>, <<"null">>}],[
+    #norm_rule{key=name, types=[string,nullable]},
+    #norm_rule{key=age, types=[float,integer,nullable]}
+]).
 
-    %%
-    %% #norm{return = [{age,null},{name,<<"null">>}],errors = []}
-    %%
+%%
+%% #norm{return = [{age,null},{name,<<"null">>}],errors = []}
+%%
 
-    norm:norm([{<<"name">>, <<"null">>},{<<"age">>, <<"null">>}],[
-        #norm_rule{key=name, types=[nullable,string]},
-        #norm_rule{key=age, types=[nullable, float,integer]}
-    ]).
+norm:norm([{<<"name">>, <<"null">>},{<<"age">>, <<"null">>}],[
+    #norm_rule{key=name, types=[nullable,string]},
+    #norm_rule{key=age, types=[nullable,float,integer]}
+]).
 
-    %%
-    %% #norm{return = [{age,null},{name,null}],errors = []}
-    %%
+%%
+%% #norm{return = [{age,null},{name,null}],errors = []}
+%%
 
-    norm:norm([{<<"fname">>, <<"null">>},{<<"age">>, <<"null">>}],[
-        #norm_rule{key=name, types=[nullable,string]},
-        #norm_rule{key=age, types=[nullable, float,integer]}
-    ]).
+norm:norm([{<<"fname">>, <<"null">>},{<<"age">>, <<"null">>}],[
+    #norm_rule{key=name, types=[nullable,string]},
+    #norm_rule{key=age, types=[nullable,float,integer]}
+]).
 
-    %% 
-    %% #norm{return = [{age,null}],errors = [
-    %%     #norm_error{
-    %%         reason = param,
-    %%         value = 'norm:undefined',
-    %%         rule = #norm_rule{
-    %%             key = name,
-    %%             nkey = name,
-    %%             types = [nullable,string],
-    %%             default = 'norm:undefined'
-    %%         }
-    %%     }
-    %% ]}
-    %% 
+%% 
+%% #norm{return = [{age,null}],errors = [
+%%     #norm_error{
+%%         reason = param,
+%%         value = 'norm:undefined',
+%%         rule = #norm_rule{
+%%             key = name,
+%%             nkey = name,
+%%             types = [nullable,string],
+%%             default = 'norm:undefined'
+%%         }
+%%     }
+%% ]}
+%% 
+```
 
 # Credis (Кто это натворил)
 
